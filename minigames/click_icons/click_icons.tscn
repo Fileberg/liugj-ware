@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://drsuxvb51b3on"]
+
+[ext_resource type="Script" path="res://minigames/click_icons/click_icons.gd" id="1_10met"]
+[ext_resource type="Texture2D" uid="uid://ckqecnyj3dv5t" path="res://assets/liugj-logo.png" id="2_edawp"]
+
+[node name="ClickIcons" type="Node2D"]
+script = ExtResource("1_10met")
+
+[node name="PlayArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 160.0
+offset_right = 1760.0
+offset_bottom = 920.0
+
+[node name="Icon" type="Node2D" parent="PlayArea"]
+
+[node name="TextureRect" type="TextureRect" parent="PlayArea/Icon"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_edawp")
+expand_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
