@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://drsuxvb51b3on"]
+[gd_scene load_steps=5 format=3 uid="uid://drsuxvb51b3on"]
 
 [ext_resource type="Script" path="res://minigames/click_icons/click_icons.gd" id="1_10met"]
 [ext_resource type="Texture2D" uid="uid://ckqecnyj3dv5t" path="res://assets/liugj-logo.png" id="2_edawp"]
+[ext_resource type="Script" path="res://minigames/click_icons/player.gd" id="3_21t0d"]
+[ext_resource type="Texture2D" uid="uid://n1nef6wxevhf" path="res://assets/icon.svg" id="3_w78ys"]
 
 [node name="ClickIcons" type="Node2D"]
 script = ExtResource("1_10met")
@@ -28,5 +30,46 @@ expand_mode = 3
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" type="Node2D" parent="Players"]
+position = Vector2(200, 200)
+script = ExtResource("3_21t0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Players/Player1"]
+z_index = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_w78ys")
+
+[node name="Player2" type="Node2D" parent="Players"]
+position = Vector2(1720, 200)
+script = ExtResource("3_21t0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Players/Player2"]
+modulate = Color(0, 0.800293, 0.343103, 1)
+z_index = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_w78ys")
+
+[node name="Player3" type="Node2D" parent="Players"]
+position = Vector2(200, 880)
+script = ExtResource("3_21t0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Players/Player3"]
+modulate = Color(1, 0.192676, 0.15946, 1)
+z_index = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_w78ys")
+
+[node name="Player4" type="Node2D" parent="Players"]
+position = Vector2(1720, 880)
+script = ExtResource("3_21t0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Players/Player4"]
+modulate = Color(0.899606, 0.226122, 1, 1)
+z_index = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_w78ys")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
