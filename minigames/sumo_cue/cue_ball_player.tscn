@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://clcjaumhn83d4"]
+
+[ext_resource type="Script" path="res://minigames/sumo_cue/cue_ball_player.gd" id="1_srdjo"]
+[ext_resource type="Texture2D" uid="uid://oyijqcw7juo3" path="res://assets/arrow.png" id="2_bqa7m"]
+[ext_resource type="Texture2D" uid="uid://n1nef6wxevhf" path="res://assets/icon.svg" id="2_haxnu"]
+[ext_resource type="Script" path="res://minigames/sumo_cue/ball_body.gd" id="2_wtr7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3360d"]
+radius = 62.8013
+
+[node name="CueBallPlayer" type="Node2D"]
+script = ExtResource("1_srdjo")
+
+[node name="BallBody" type="CharacterBody2D" parent="."]
+script = ExtResource("2_wtr7t")
+
+[node name="ArrowRotPoint" type="Node2D" parent="BallBody"]
+
+[node name="Arrow" type="Sprite2D" parent="BallBody/ArrowRotPoint"]
+position = Vector2(201, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_bqa7m")
+
+[node name="Ball" type="Sprite2D" parent="BallBody"]
+texture = ExtResource("2_haxnu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallBody"]
+shape = SubResource("CircleShape2D_3360d")

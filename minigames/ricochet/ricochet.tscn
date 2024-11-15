@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cofdoe3y6jl5f"]
+
+[ext_resource type="Script" path="res://minigames/ricochet/ricochet.gd" id="1_7xg5m"]
+
+[node name="Ricochet" type="Node2D"]
+script = ExtResource("1_7xg5m")
