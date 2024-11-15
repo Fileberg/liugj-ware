@@ -89,11 +89,6 @@ func _unhandled_input(event : InputEvent):
 		current_minigame.handle_input(event, player_id)
 
 
-func _on_main_menu_pressed_play() -> void:
-	if players.size() > 0:
-		_start_playing()
-
-
 func _on_minigame_give_player_points(player_id, points) -> void:
 	for player in players:
 		if player.id == player_id:

@@ -1,10 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6ioetyqhfwul"]
+[gd_scene load_steps=17 format=3 uid="uid://b6ioetyqhfwul"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_07048"]
 [ext_resource type="PackedScene" uid="uid://c3oun2tch84yc" path="res://main_menu/main_menu.tscn" id="1_iaif2"]
 [ext_resource type="Texture2D" uid="uid://dbcxrsklqqf5a" path="res://assets/door_left.png" id="3_qfvjf"]
+[ext_resource type="LabelSettings" uid="uid://cpffrc00no5de" path="res://main_menu/size_128_font_label.tres" id="3_voo4a"]
 [ext_resource type="Texture2D" uid="uid://clwwjb5752esu" path="res://assets/door_right.png" id="4_h3qw3"]
 [ext_resource type="Script" path="res://main/player_label.gd" id="5_r0qy6"]
+[ext_resource type="LabelSettings" uid="uid://dk2v78e4j4dp1" path="res://main/player_1_name.tres" id="6_ey05i"]
+[ext_resource type="LabelSettings" uid="uid://dqd4vp5jc4ubl" path="res://main/points_label.tres" id="7_oeepg"]
+[ext_resource type="LabelSettings" uid="uid://d0k6jemtwrqa5" path="res://main/player_2_name.tres" id="8_sn8ut"]
+[ext_resource type="LabelSettings" uid="uid://d25tad24v3tpm" path="res://main/player_3_name.tres" id="9_fg5jl"]
+[ext_resource type="LabelSettings" uid="uid://bganbrmshu12y" path="res://main/player_4_name.tres" id="10_cdr4b"]
 
 [sub_resource type="Animation" id="Animation_ho1pi"]
 length = 0.001
@@ -238,6 +244,7 @@ offset_bottom = 660.0
 pivot_offset = Vector2(120, 120)
 theme_override_font_sizes/font_size = 128
 text = "3"
+label_settings = ExtResource("3_voo4a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -288,6 +295,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 64
 text = "PLAYER 1"
+label_settings = ExtResource("6_ey05i")
 
 [node name="PointsLabel" type="Label" parent="PlayerLabel1"]
 layout_mode = 0
@@ -296,6 +304,7 @@ offset_right = 357.0
 offset_bottom = 188.0
 theme_override_font_sizes/font_size = 48
 text = "Press START"
+label_settings = ExtResource("7_oeepg")
 
 [node name="PlayerLabel2" type="Control" parent="."]
 z_index = 11
@@ -313,6 +322,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 64
 text = "PLAYER 2"
+label_settings = ExtResource("8_sn8ut")
 
 [node name="PointsLabel" type="Label" parent="PlayerLabel2"]
 layout_mode = 0
@@ -321,6 +331,7 @@ offset_right = 357.0
 offset_bottom = 188.0
 theme_override_font_sizes/font_size = 48
 text = "Press START"
+label_settings = ExtResource("7_oeepg")
 
 [node name="PlayerLabel3" type="Control" parent="."]
 z_index = 11
@@ -338,6 +349,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 64
 text = "PLAYER 3"
+label_settings = ExtResource("9_fg5jl")
 
 [node name="PointsLabel" type="Label" parent="PlayerLabel3"]
 layout_mode = 0
@@ -346,6 +358,7 @@ offset_right = 357.0
 offset_bottom = 188.0
 theme_override_font_sizes/font_size = 48
 text = "Press START"
+label_settings = ExtResource("7_oeepg")
 
 [node name="PlayerLabel4" type="Control" parent="."]
 z_index = 11
@@ -363,6 +376,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 64
 text = "PLAYER 4"
+label_settings = ExtResource("10_cdr4b")
 
 [node name="PointsLabel" type="Label" parent="PlayerLabel4"]
 layout_mode = 0
@@ -371,7 +385,7 @@ offset_right = 357.0
 offset_bottom = 188.0
 theme_override_font_sizes/font_size = 48
 text = "Press START"
+label_settings = ExtResource("7_oeepg")
 
-[connection signal="pressed_play" from="MainMenu" to="." method="_on_main_menu_pressed_play"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -38,6 +38,7 @@ position = Vector2(200, 200)
 script = ExtResource("3_21t0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Players/Player1"]
+modulate = Color(1, 0.566667, 0, 1)
 z_index = 1
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
@@ -48,7 +49,6 @@ position = Vector2(1720, 200)
 script = ExtResource("3_21t0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Players/Player2"]
-modulate = Color(0, 0.800293, 0.343103, 1)
 z_index = 1
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
@@ -59,7 +59,7 @@ position = Vector2(200, 880)
 script = ExtResource("3_21t0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Players/Player3"]
-modulate = Color(1, 0.192676, 0.15946, 1)
+modulate = Color(1, 0, 0.983333, 1)
 z_index = 1
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
@@ -70,7 +70,7 @@ position = Vector2(1720, 880)
 script = ExtResource("3_21t0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Players/Player4"]
-modulate = Color(0.899606, 0.226122, 1, 1)
+modulate = Color(0, 1, 0.0666666, 1)
 z_index = 1
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
