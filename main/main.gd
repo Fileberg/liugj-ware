@@ -90,11 +90,19 @@ func _unhandled_input(event : InputEvent):
 
 
 func _on_minigame_give_player_points(player_id, points) -> void:
+	var highest_points := 0
+	var winning_player_ids : Array[int] = []
 	for player in players:
 		if player.id == player_id:
 			player.points += points
 			get_node("PlayerLabel" + str(player.id)).set_points(player.points)
-			break
+
+		if player.points >= highest_points:
+			highest_points = player.points
+			winning_player_ids.append(player.id)
+
+	for player in players:
+		get_node("PlayerLabel" + str(player.id)).set_winning(player.id in winning_player_ids)
 
 
 func _on_minigame_finished() -> void:
