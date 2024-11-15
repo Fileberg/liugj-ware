@@ -9,7 +9,7 @@ var points_this_round : int = 0
 
 
 func _physics_process(delta):
-	var input_dir = Input.get_vector(input_left, input_right, input_up, input_down)
+	var input_dir = Input.get_vector(input_left, input_right, input_up, input_down).normalized()
 
 	if has_started:
 		velocity.x = input_dir.x * MOVE_SPEED

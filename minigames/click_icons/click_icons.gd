@@ -47,6 +47,7 @@ func start() -> void:
 
 
 func handle_input(event : InputEvent, player_id : int) -> void:
+
 	if (event.is_action_pressed("p" + str(player_id) + "_jump") or event.is_action_pressed("p" + str(player_id) + "_action")) and not event.is_echo():
 		for icon in icons:
 			if icon.global_position.distance_squared_to(get_node("Players/Player" + str(player_id)).global_position) < ICON_SIZE * ICON_SIZE:

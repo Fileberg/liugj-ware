@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp2cyniq4ergw"]
+
+[ext_resource type="Script" path="res://minigames/mash_stop/mash_stop.gd" id="1_rv1bs"]
+[ext_resource type="Texture2D" uid="uid://dhf3g6gngdl60" path="res://assets/stop.png" id="2_5oybn"]
+[ext_resource type="Texture2D" uid="uid://dmttr3bjr5www" path="res://assets/mash.png" id="3_wv1qp"]
+[ext_resource type="PackedScene" uid="uid://bqechtisjfbxl" path="res://minigames/mash_stop/dancing_player.tscn" id="4_fg6re"]
+
+[node name="MashStop" type="Node2D"]
+script = ExtResource("1_rv1bs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="MashTimer" type="Timer" parent="."]
+
+[node name="Signs" type="Node2D" parent="."]
+
+[node name="Stop" type="Sprite2D" parent="Signs"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_5oybn")
+
+[node name="Mash" type="Sprite2D" parent="Signs"]
+position = Vector2(960, 540)
+texture = ExtResource("3_wv1qp")
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("4_fg6re")]
+position = Vector2(313, 276)
+
+[node name="Player2" parent="Players" instance=ExtResource("4_fg6re")]
+position = Vector2(1601, 258)
+
+[node name="Player3" parent="Players" instance=ExtResource("4_fg6re")]
+position = Vector2(313, 783)
+
+[node name="Player4" parent="Players" instance=ExtResource("4_fg6re")]
+position = Vector2(1570, 784)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MashTimer" to="." method="_on_mash_timer_timeout"]
