@@ -10,10 +10,6 @@ var input_action : String
 var input_jump : String
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func set_input_names(id):
 	input_left = "p" + str(id) + "_left"

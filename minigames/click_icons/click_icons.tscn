@@ -34,6 +34,7 @@ autostart = true
 [node name="Players" type="Node" parent="."]
 
 [node name="Player1" type="Node2D" parent="Players"]
+process_mode = 4
 position = Vector2(200, 200)
 script = ExtResource("3_21t0d")
 
@@ -43,6 +44,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
 
 [node name="Player2" type="Node2D" parent="Players"]
+process_mode = 4
 position = Vector2(1720, 200)
 script = ExtResource("3_21t0d")
 
@@ -53,6 +55,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
 
 [node name="Player3" type="Node2D" parent="Players"]
+process_mode = 4
 position = Vector2(200, 880)
 script = ExtResource("3_21t0d")
 
@@ -63,6 +66,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_w78ys")
 
 [node name="Player4" type="Node2D" parent="Players"]
+process_mode = 4
 position = Vector2(1720, 880)
 script = ExtResource("3_21t0d")
 

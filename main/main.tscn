@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6ioetyqhfwul"]
+[gd_scene load_steps=11 format=3 uid="uid://b6ioetyqhfwul"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_07048"]
 [ext_resource type="PackedScene" uid="uid://c3oun2tch84yc" path="res://main_menu/main_menu.tscn" id="1_iaif2"]
+[ext_resource type="Texture2D" uid="uid://dbcxrsklqqf5a" path="res://assets/door_left.png" id="3_qfvjf"]
+[ext_resource type="Texture2D" uid="uid://clwwjb5752esu" path="res://assets/door_right.png" id="4_h3qw3"]
+[ext_resource type="Script" path="res://main/player_label.gd" id="5_r0qy6"]
 
 [sub_resource type="Animation" id="Animation_ho1pi"]
 length = 0.001
@@ -40,6 +43,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Doors/DoorLeft:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Doors/DoorRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2880, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Doors:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_lg5gl"]
@@ -82,9 +121,91 @@ tracks/2/keys = {
 "values": [Vector2(1, 1), Vector2(2.5, 2.5), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_hpjbu"]
+resource_name = "close_scene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doors/DoorLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(960, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Doors/DoorRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2880, 0), Vector2(1920, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Doors:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wwibj"]
+resource_name = "open_scene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doors/DoorLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Doors/DoorRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(2880, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Doors:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tp524"]
 _data = {
 "RESET": SubResource("Animation_ho1pi"),
+"close_scene": SubResource("Animation_hpjbu"),
+"open_scene": SubResource("Animation_wwibj"),
 "start_minigame": SubResource("Animation_lg5gl")
 }
 
@@ -111,5 +232,55 @@ libraries = {
 "": SubResource("AnimationLibrary_tp524")
 }
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Doors" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_left = -0.5
+anchor_right = 1.5
+anchor_bottom = 1.0
+offset_right = -0.000244141
+
+[node name="DoorLeft" type="TextureRect" parent="Doors"]
+z_index = 10
+offset_right = 960.0
+offset_bottom = 1080.0
+texture = ExtResource("3_qfvjf")
+
+[node name="DoorRight" type="TextureRect" parent="Doors"]
+z_index = 10
+offset_left = 2880.0
+offset_right = 3840.0
+offset_bottom = 1080.0
+texture = ExtResource("4_h3qw3")
+
+[node name="PlayerLabel1" type="Control" parent="."]
+z_index = 11
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 240.0
+script = ExtResource("5_r0qy6")
+
+[node name="NameLabel" type="Label" parent="PlayerLabel1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 64
+text = "PLAYER 1"
+
+[node name="PointsLabel" type="Label" parent="PlayerLabel1"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 357.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 48
+text = "NOT READY"
+
 [connection signal="pressed_play" from="MainMenu" to="." method="_on_main_menu_pressed_play"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

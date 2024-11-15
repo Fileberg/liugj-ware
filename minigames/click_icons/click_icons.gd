@@ -5,6 +5,7 @@ const ICON_SIZE := 128.0
 const START_POSITIONS := [Vector2(200.0, 200.0), Vector2(1720.0, 200.0), Vector2(200.0, 880.0), Vector2(1720.0, 880.0)]
 
 @onready var randy := RandomNumberGenerator.new()
+var has_started := false
 
 
 func _ready():
@@ -24,9 +25,18 @@ func prepare(players : Array) -> void:
 		unused_ids.erase(player.id)
 		var player_controller = get_node("Players/Player" + str(player.id)) as PlayerController
 		player_controller.set_input_names(player.id)
+		player_controller.process_mode = PROCESS_MODE_INHERIT
 
 	for id in unused_ids:
 		get_node("Players/Player" + str(id)).queue_free()
+
+	has_started = false
+
+
+func start() -> void:
+	has_started = true
+	for child in $Players.get_children():
+		child.has_started = true
 
 
 func _process(delta):
