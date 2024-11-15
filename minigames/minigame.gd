@@ -4,19 +4,20 @@ extends Node
 signal finished()
 signal give_points(player_id, points)
 
+var has_started := false
 
 
 func prepare(_players : Array) -> void:
-	pass
+	print("this function is not implemented yet!")
 
 
 func start() -> void:
-	pass
+	print("this function is not implemented yet!")
 
 
-func handle_input(event : InputEvent, player_id):
-	pass
+func handle_input(_event : InputEvent, _player_id : int) -> void:
+	print("this function is not implemented yet!")
 
 
 func end() -> void:
-	finished.emit()
+	print("this function is not implemented yet!")
