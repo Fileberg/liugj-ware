@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://txw8xhhjwy1p"]
 
 [ext_resource type="Script" path="res://minigames/sumo_cue/sumo_cue.gd" id="1_xu051"]
-[ext_resource type="Texture2D" uid="uid://dmttr3bjr5www" path="res://assets/mash.png" id="2_pe1bt"]
+[ext_resource type="Texture2D" uid="uid://chgkdbasanbom" path="res://assets/cue_ball.png" id="2_ynni1"]
 [ext_resource type="PackedScene" uid="uid://clcjaumhn83d4" path="res://minigames/sumo_cue/cue_ball_player.tscn" id="3_17bpm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyrxr"]
@@ -16,25 +16,29 @@ script = ExtResource("1_xu051")
 position = Vector2(990, 540)
 shape = SubResource("CircleShape2D_jyrxr")
 
-[node name="Mash" type="Sprite2D" parent="Arena"]
+[node name="ArenaSprite" type="Sprite2D" parent="Arena"]
 z_index = -1
 position = Vector2(988.25, 539)
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("2_pe1bt")
+texture = ExtResource("2_ynni1")
 
 [node name="Players" type="Node" parent="."]
 
 [node name="Player1" parent="Players" instance=ExtResource("3_17bpm")]
 position = Vector2(720, 269)
+arrow_color = Color(0.99, 0.6765, 0, 1)
 
 [node name="Player2" parent="Players" instance=ExtResource("3_17bpm")]
 position = Vector2(1259, 275)
+arrow_color = Color(0, 0, 1, 1)
 
 [node name="Player3" parent="Players" instance=ExtResource("3_17bpm")]
 position = Vector2(710, 795)
+arrow_color = Color(1, 0, 1, 1)
 
 [node name="Player4" parent="Players" instance=ExtResource("3_17bpm")]
 position = Vector2(1275, 780)
+arrow_color = Color(0, 1, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

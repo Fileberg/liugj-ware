@@ -52,7 +52,10 @@ func _on_timer_timeout():
 
 
 func _on_arena_body_exited(body: Node2D) -> void:
-
+	
+	if not has_started:
+		return
+		
 	var dead_player = body.get_parent()
 	players_in_arena.erase(dead_player)
 	dead_player.queue_free()

@@ -4,9 +4,15 @@ var has_started := false
 var points_this_round : int = 0
 @onready var velocity := Vector2.ZERO
 
+@export var arrow_color = Color.WHITE
+
 const MAX_CHARGE = 800
 const CHARGE_SPEED = 400
 var shot_charge : float = 0.0
+
+func _ready() -> void:
+	$BallBody/ArrowRotPoint/Arrow.modulate = arrow_color
+	$BallBody/Ball.modulate = arrow_color
 
 func _physics_process(delta):
 	
