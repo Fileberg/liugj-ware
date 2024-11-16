@@ -46,8 +46,10 @@ func _ready() -> void:
 	minigames = Array()
 	minigames.append(load("res://minigames/click_icons/click_icons.tscn"))
 	minigames.append(load("res://minigames/shooty/shooty.tscn"))
-	# add_player(1, 2)
-	
+	minigames.append(load("res://minigames/mash_stop/mash_stop.tscn"))
+	minigames.append(load("res://minigames/sumo_cue/sumo_cue.tscn"))
+	minigames.append(load("res://minigames/tenta_dodge/tenta_dodge.tscn"))
+	#add_player(1, 2)
 	#add_player(2, 3)
 	#add_player(3, 4)
 

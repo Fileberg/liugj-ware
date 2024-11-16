@@ -17,7 +17,3 @@ func start() -> void:
 
 func handle_input(_event : InputEvent, _player_id : int) -> void:
 	print("this function is not implemented yet!")
-
-
-func end() -> void:
-	print("this function is not implemented yet!")

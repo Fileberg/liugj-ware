@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="liugj-ware"
 
+[global_group]
+
+death_box=""
+
 [input]
 
 start={

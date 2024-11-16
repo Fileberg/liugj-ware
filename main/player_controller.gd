@@ -8,10 +8,11 @@ var input_up : String
 var input_down : String
 var input_action : String
 var input_jump : String
-
+var input_id : int
 
 
 func set_input_names(id):
+	input_id = id
 	input_left = "p" + str(id) + "_left"
 	input_right = "p" + str(id) + "_right"
 	input_up = "p" + str(id) + "_up"

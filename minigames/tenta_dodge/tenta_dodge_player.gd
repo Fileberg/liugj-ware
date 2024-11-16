@@ -6,7 +6,10 @@ const MOVE_SPEED = 400.0
 var has_started := false
 var points_this_round : int = 0
 @onready var velocity := Vector2.ZERO
+@export var color : Color = Color.WHITE
 
+func _ready() -> void:
+	$Sprite2D.modulate = color
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector(input_left, input_right, input_up, input_down).normalized()
@@ -20,3 +23,8 @@ func _physics_process(delta):
 
 	if not input_dir.is_zero_approx():
 		$Sprite2D.set_rotation(atan2(input_dir.y, input_dir.x) + PI/2)
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("death_box"):
+		queue_free()
