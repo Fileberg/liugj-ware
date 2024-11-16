@@ -45,7 +45,9 @@ func _ready() -> void:
 	players = []
 	minigames = Array()
 	minigames.append(load("res://minigames/click_icons/click_icons.tscn"))
-	#add_player(1, 2)
+	minigames.append(load("res://minigames/shooty/shooty.tscn"))
+	# add_player(1, 2)
+	
 	#add_player(2, 3)
 	#add_player(3, 4)
 
