@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://batk5qi32c414"]
+
+[ext_resource type="Script" path="res://minigames/tenta_dodge/tenta_dodge.gd" id="1_oxuei"]
+[ext_resource type="PackedScene" uid="uid://baayms4vw1lwe" path="res://minigames/tenta_dodge/tenta_dodge_player.tscn" id="2_3c80b"]
+[ext_resource type="PackedScene" uid="uid://b2synvm8c7xh2" path="res://minigames/tenta_dodge/danger_spawner.tscn" id="3_afjas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_outdd"]
+size = Vector2(1925, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbxs2"]
+size = Vector2(199, 1112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njql2"]
+size = Vector2(1991, 61)
+
+[node name="TentaDodge" type="Node2D"]
+script = ExtResource("1_oxuei")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("2_3c80b")]
+position = Vector2(285, 692)
+color = Color(1, 0.716667, 0, 1)
+
+[node name="Player2" parent="Players" instance=ExtResource("2_3c80b")]
+position = Vector2(1572, 683)
+color = Color(0, 0, 1, 1)
+
+[node name="Player3" parent="Players" instance=ExtResource("2_3c80b")]
+position = Vector2(671, 672)
+color = Color(1, 0, 1, 1)
+
+[node name="Player4" parent="Players" instance=ExtResource("2_3c80b")]
+position = Vector2(1149, 671)
+color = Color(0, 1, 0, 1)
+
+[node name="DeathBox" type="Area2D" parent="." groups=["death_box"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBox"]
+position = Vector2(952.5, -83)
+shape = SubResource("RectangleShape2D_outdd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathBox"]
+position = Vector2(952, 1165)
+shape = SubResource("RectangleShape2D_outdd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathBox"]
+position = Vector2(-106, 539)
+shape = SubResource("RectangleShape2D_bbxs2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathBox"]
+position = Vector2(2027, 556)
+shape = SubResource("RectangleShape2D_bbxs2")
+
+[node name="DangerSpawner" parent="." node_paths=PackedStringArray("spawnarea") instance=ExtResource("3_afjas")]
+position = Vector2(953, -81)
+spawnarea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="DangerSpawner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerSpawner/Area2D"]
+shape = SubResource("RectangleShape2D_njql2")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

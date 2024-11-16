@@ -2,7 +2,7 @@ extends Minigame
 
 const MAX_ICONS := 10
 const ICON_SIZE := 128.0
-const POINTS_PER_ICON := 1
+const POINTS_PER_ICON := 12
 const START_POSITIONS := [Vector2(200.0, 200.0), Vector2(1720.0, 200.0), Vector2(200.0, 880.0), Vector2(1720.0, 880.0)]
 
 @onready var randy := RandomNumberGenerator.new()
