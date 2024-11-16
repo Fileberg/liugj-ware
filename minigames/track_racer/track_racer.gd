@@ -1,7 +1,7 @@
 extends Minigame
 
 
-const POINTS_PER_LAP := 20
+const POINTS_PER_GOAL := 5
 
 var players : Array[Player]
 
@@ -54,4 +54,4 @@ func _on_goal_area_racer_entered(area : Area2D) -> void:
 		if child is TrackRacer:
 			var racer = child as TrackRacer
 			if racer.has_started:
-				give_points.emit(racer.id, POINTS_PER_LAP)
+				give_points.emit(racer.id, POINTS_PER_GOAL)

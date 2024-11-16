@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://31xdydt7osqi"]
+[gd_scene load_steps=10 format=3 uid="uid://31xdydt7osqi"]
 
 [ext_resource type="Script" path="res://minigames/track_racer/track_racer.gd" id="1_1jfl3"]
 [ext_resource type="Texture2D" uid="uid://dlib3fd3rribd" path="res://assets/racing_track.png" id="2_orbgx"]
 [ext_resource type="Script" path="res://minigames/track_racer/track_racer_player.gd" id="2_yb8jf"]
 [ext_resource type="Texture2D" uid="uid://d1grdm8m3bl1n" path="res://assets/racing_car.png" id="3_3axos"]
+[ext_resource type="Texture2D" uid="uid://dau5esm2ylta1" path="res://assets/race_goal.png" id="4_6tkuo"]
 [ext_resource type="LabelSettings" uid="uid://bbr1rhvklb57e" path="res://main_menu/size_64_font_label.tres" id="5_awvu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gc00"]
@@ -47,6 +48,104 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
 shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
+
+[node name="GoalArea2" type="Area2D" parent="."]
+position = Vector2(600, 150)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea2"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea2"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
+
+[node name="GoalArea3" type="Area2D" parent="."]
+position = Vector2(1770, 700)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea3"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea3"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
+
+[node name="GoalArea4" type="Area2D" parent="."]
+position = Vector2(1200, 300)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea4"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea4"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
+
+[node name="GoalArea5" type="Area2D" parent="."]
+position = Vector2(550, 300)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea5"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea5"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
+
+[node name="GoalArea6" type="Area2D" parent="."]
+position = Vector2(800, 950)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea6"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="TextureRect" type="TextureRect" parent="GoalArea6"]
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 20)
+texture = ExtResource("4_6tkuo")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3swka")
@@ -142,3 +241,8 @@ shape = SubResource("RectangleShape2D_yn44w")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="GoalArea" to="." method="_on_goal_area_racer_entered"]
+[connection signal="area_entered" from="GoalArea2" to="." method="_on_goal_area_racer_entered"]
+[connection signal="area_entered" from="GoalArea3" to="." method="_on_goal_area_racer_entered"]
+[connection signal="area_entered" from="GoalArea4" to="." method="_on_goal_area_racer_entered"]
+[connection signal="area_entered" from="GoalArea5" to="." method="_on_goal_area_racer_entered"]
+[connection signal="area_entered" from="GoalArea6" to="." method="_on_goal_area_racer_entered"]
