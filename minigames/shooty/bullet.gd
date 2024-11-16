@@ -51,9 +51,7 @@ func find_target():
 				continue
 			
 			var distance = global_position.distance_to(node.global_position)
-			print("Distance to: ", node.name, " is ", distance)
-			print(global_position)
-			print(node.global_position)
+
 			if distance < closest_dist:
 				closest_dist = distance
 				target = node
