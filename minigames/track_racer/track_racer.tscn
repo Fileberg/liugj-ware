@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://31xdydt7osqi"]
+
+[ext_resource type="Script" path="res://minigames/track_racer/track_racer.gd" id="1_1jfl3"]
+[ext_resource type="Texture2D" uid="uid://dlib3fd3rribd" path="res://assets/racing_track.png" id="2_orbgx"]
+[ext_resource type="Script" path="res://minigames/track_racer/track_racer_player.gd" id="2_yb8jf"]
+[ext_resource type="Texture2D" uid="uid://d1grdm8m3bl1n" path="res://assets/racing_car.png" id="3_3axos"]
+[ext_resource type="LabelSettings" uid="uid://bbr1rhvklb57e" path="res://main_menu/size_64_font_label.tres" id="5_awvu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gc00"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_3swka"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 800, 0, 0, 0, 0, 200, 300, -150, 0, 0, 0, 350, 150, 0, 0, 0, 0, 1620, 150, 0, -150, 0, 0, 1770, 300, 0, 0, 0, 0, 1770, 750, 150, 0, 0, 0, 1620, 900, 0, 0, 0, 0, 1470, 900, 0, 150, 0, 0, 1320, 750, -150, 0, 0, 0, 1470, 600, 0, 150, 0, 0, 1620, 450, 150, 0, 0, 0, 1470, 300, 0, 0, 0, 0, 1170, 300, 0, -150, 0, 0, 1020, 450, 150, 0, 0, 0, 870, 600, 0, 150, 0, 0, 720, 450, 150, 0, 0, 0, 570, 300, 0, -150, 0, 0, 420, 450, 0, 0, 0, 0, 420, 600, -150, 0, 0, 0, 570, 750, 0, 0, 0, 0, 1020, 750, 0, -100, 0, 0, 1170, 850, 150, 0, 0, 0, 1020, 950, 0, 0, 0, 0, 350, 950, 0, 150, 0, 0, 200, 800)
+}
+point_count = 25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn44w"]
+
+[node name="TrackRacer" type="Node2D"]
+script = ExtResource("1_1jfl3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="TrackImage" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_orbgx")
+
+[node name="HintLabel" type="Label" parent="."]
+offset_left = 705.0
+offset_top = 669.0
+offset_right = 1230.0
+offset_bottom = 848.0
+text = "A to ACCELERATE
+B to BRAKE"
+label_settings = ExtResource("5_awvu6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(200, 800)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
+shape = SubResource("RectangleShape2D_6gc00")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3swka")
+
+[node name="PathFollow1" type="PathFollow2D" parent="Path2D"]
+position = Vector2(200, 800)
+rotation = -1.5708
+
+[node name="Player1" type="Node2D" parent="Path2D/PathFollow1"]
+position = Vector2(0, -96)
+script = ExtResource("2_yb8jf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow1/Player1"]
+modulate = Color(1, 0.566667, 0, 1)
+z_index = 1
+position = Vector2(0, -1.52588e-05)
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_3axos")
+
+[node name="Area1" type="Area2D" parent="Path2D/PathFollow1"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow1/Area1"]
+shape = SubResource("RectangleShape2D_yn44w")
+
+[node name="PathFollow2" type="PathFollow2D" parent="Path2D"]
+position = Vector2(200, 800)
+rotation = -1.5708
+
+[node name="Player2" type="Node2D" parent="Path2D/PathFollow2"]
+position = Vector2(0, -32)
+script = ExtResource("2_yb8jf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2/Player2"]
+modulate = Color(0, 0.483333, 1, 1)
+z_index = 1
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_3axos")
+
+[node name="Area2" type="Area2D" parent="Path2D/PathFollow2"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2/Area2"]
+shape = SubResource("RectangleShape2D_yn44w")
+
+[node name="PathFollow3" type="PathFollow2D" parent="Path2D"]
+position = Vector2(200, 800)
+rotation = -1.5708
+
+[node name="Player3" type="Node2D" parent="Path2D/PathFollow3"]
+position = Vector2(0, 32)
+script = ExtResource("2_yb8jf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow3/Player3"]
+modulate = Color(1, 0, 0.983333, 1)
+z_index = 1
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_3axos")
+
+[node name="Area3" type="Area2D" parent="Path2D/PathFollow3"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow3/Area3"]
+shape = SubResource("RectangleShape2D_yn44w")
+
+[node name="PathFollow4" type="PathFollow2D" parent="Path2D"]
+position = Vector2(200, 800)
+rotation = -1.5708
+
+[node name="Player4" type="Node2D" parent="Path2D/PathFollow4"]
+position = Vector2(0, 96)
+script = ExtResource("2_yb8jf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow4/Player4"]
+modulate = Color(0, 1, 0.0666666, 1)
+z_index = 1
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_3axos")
+
+[node name="Area4" type="Area2D" parent="Path2D/PathFollow4"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow4/Area4"]
+shape = SubResource("RectangleShape2D_yn44w")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="GoalArea" to="." method="_on_goal_area_racer_entered"]
