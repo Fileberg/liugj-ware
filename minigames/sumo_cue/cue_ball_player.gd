@@ -11,19 +11,19 @@ var shot_charge : float = 0.0
 func _physics_process(delta):
 	
 	$BallBody/ArrowRotPoint/Arrow.visible = false
-	
-	if Input.is_action_pressed(input_jump):
+	if has_started:
+		if Input.is_action_pressed(input_jump):
+			
+			shot_charge += CHARGE_SPEED * delta
+			shot_charge = min(shot_charge, MAX_CHARGE)
+			$BallBody/ArrowRotPoint/Arrow.visible = true
+			
+			$BallBody/ArrowRotPoint/Arrow.scale.x = 0.3 * max(shot_charge, 0)/MAX_CHARGE
+			
+		var input_dir = Input.get_vector(input_left, input_right, input_up, input_down).normalized()
+			
+		if Input.is_action_just_released(input_jump):
+			$BallBody.velocity += input_dir * max(shot_charge, 0)
+			shot_charge = -100
 		
-		shot_charge += CHARGE_SPEED * delta
-		shot_charge = min(shot_charge, MAX_CHARGE)
-		$BallBody/ArrowRotPoint/Arrow.visible = true
-		
-		$BallBody/ArrowRotPoint/Arrow.scale.x = 0.3 * max(shot_charge, 0)/MAX_CHARGE
-		
-	var input_dir = Input.get_vector(input_left, input_right, input_up, input_down).normalized()
-		
-	if Input.is_action_just_released(input_jump):
-		$BallBody.velocity += input_dir * max(shot_charge, 0)
-		shot_charge = -100
-	
-	$BallBody/ArrowRotPoint.rotation = input_dir.angle()
+		$BallBody/ArrowRotPoint.rotation = input_dir.angle()

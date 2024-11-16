@@ -58,6 +58,7 @@ func _on_arena_body_exited(body: Node2D) -> void:
 	dead_player.queue_free()
 	
 	if len(players_in_arena) == 1:
+		$Timer.stop()
 		var winner = players_in_arena[0]
 		give_points.emit(winner.input_id, 8)
 		finished.emit()
