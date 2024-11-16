@@ -50,6 +50,7 @@ func _ready() -> void:
 	minigames.append(load("res://minigames/mash_stop/mash_stop.tscn"))
 	minigames.append(load("res://minigames/sumo_cue/sumo_cue.tscn"))
 	minigames.append(load("res://minigames/tenta_dodge/tenta_dodge.tscn"))
+	minigames.append(load("res://minigames/track_racer/track_racer.tscn"))
 	#add_player(1, 2)
 	#add_player(2, 3)
 	#add_player(3, 4)
