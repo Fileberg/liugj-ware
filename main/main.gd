@@ -29,6 +29,7 @@ var players : Array[Player]
 
 var on_main_menu := true
 
+var played_minigames = Array()
 var minigames : Array
 var current_minigame : Minigame
 var minigames_played := 0
@@ -44,9 +45,11 @@ const WAIT_TIME_GAME_OVER := 5.0
 func _ready() -> void:
 	players = []
 	minigames = Array()
-	#minigames.append(load("res://minigames/click_icons/click_icons.tscn"))
-	#minigames.append(load("res://minigames/mash_stop/mash_stop.tscn"))
+	minigames.append(load("res://minigames/click_icons/click_icons.tscn"))
+	minigames.append(load("res://minigames/shooty/shooty.tscn"))
+	minigames.append(load("res://minigames/mash_stop/mash_stop.tscn"))
 	minigames.append(load("res://minigames/sumo_cue/sumo_cue.tscn"))
+	minigames.append(load("res://minigames/tenta_dodge/tenta_dodge.tscn"))
 	#add_player(1, 2)
 	#add_player(2, 3)
 	#add_player(3, 4)
@@ -187,7 +190,17 @@ func _go_back_to_main_menu() -> void:
 func _load_new_minigame() -> void:
 	if not current_minigame == null:
 		current_minigame.queue_free()
-	current_minigame = minigames[randy.randi_range(0, minigames.size()-1)].instantiate()
+	while true:
+		var minigame_index = randy.randi_range(0, minigames.size()-1)
+		
+		if not played_minigames.has(minigame_index):
+			current_minigame = minigames[minigame_index].instantiate()
+			played_minigames.append(minigame_index)
+			
+			if played_minigames.size() == minigames.size():
+				played_minigames = Array()
+			break
+
 	add_child(current_minigame)
 	current_minigame.finished.connect(_on_minigame_finished)
 	current_minigame.give_points.connect(_on_minigame_give_player_points)

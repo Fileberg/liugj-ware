@@ -2,7 +2,7 @@ extends Minigame
 
 const MAX_ICONS := 10
 const ICON_SIZE := 128.0
-const POINTS_PER_ICON := 1
+const POINTS_PER_ICON := 12
 const START_POSITIONS := [Vector2(200.0, 200.0), Vector2(1720.0, 200.0), Vector2(200.0, 880.0), Vector2(1720.0, 880.0)]
 
 @onready var randy := RandomNumberGenerator.new()
@@ -13,6 +13,7 @@ var icons : Array[Node2D]
 func _ready():
 	var x_size := ($PlayArea as Control).size.x
 	var y_size := ($PlayArea as Control).size.y
+	
 	$PlayArea/Icon.set_position(Vector2(randy.randf_range(0.0, x_size - ICON_SIZE), randy.randf_range(0.0, y_size - ICON_SIZE)))
 	icons = [$PlayArea/Icon]
 	for i in range(MAX_ICONS - 1):
@@ -35,6 +36,7 @@ func prepare(players : Array) -> void:
 		get_node("Players/Player" + str(id)).queue_free()
 
 	has_started = false
+	print($Players.get_children())
 	for child in $Players.get_children():
 		child.has_started = false
 

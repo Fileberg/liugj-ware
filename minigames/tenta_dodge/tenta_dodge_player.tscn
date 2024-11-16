@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://baayms4vw1lwe"]
+
+[ext_resource type="Script" path="res://minigames/tenta_dodge/tenta_dodge_player.gd" id="1_uadui"]
+[ext_resource type="Texture2D" uid="uid://n1nef6wxevhf" path="res://assets/icon.svg" id="2_pgpg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fr2l"]
+size = Vector2(108, 103)
+
+[node name="TentaDodgePlayer" type="Node2D"]
+script = ExtResource("1_uadui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pgpg4")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7fr2l")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
